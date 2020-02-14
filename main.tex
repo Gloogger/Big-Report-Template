@@ -1,0 +1,153 @@
+\documentclass[12pt]{report}
+% font setup, use Lualatex to compile!
+\usepackage{fontspec}
+% change caption as I WANT
+\usepackage{caption}
+% add delete line
+\usepackage[normalem]{ulem}
+% page margin = 25.4mm on each side
+\usepackage[inner=2.54cm,outer=2.54cm]{geometry}
+%\setmainfont{Calibri}
+\setmainfont[
+ ExternalLocation=font/,
+ BoldFont={CalibriBold}, 
+ ItalicFont={CalibriItalic},
+ BoldItalicFont={CalibriBoldItalic}
+ ]{Calibri}
+% initialize image referencing
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+% allows the insertion of figures as A3 or A2 pages
+\usepackage[paper=A4,pagesize]{typearea}
+\usepackage{afterpage}
+% insert pdf pages
+\usepackage{pdfpages}
+% allows really loooooonnnnngggg table
+\usepackage{longtable}
+% allows landscape figure
+\usepackage{rotating}
+% initialize clickable references
+\usepackage[unicode]{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+% reference styles
+\usepackage[style=ieee, natbib=true]{biblatex}
+\addbibresource{refs.bib}
+% appendices
+\usepackage{appendix}
+% initialize math tools
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{empheq}
+% define sign convention
+\makeatletter
+
+\newcommand*\curveplus{%
+  \mathbin{\rotatebox[origin=c]{90}{$\m@th\curvearrowleft$}+}}
+
+\newcommand*\rightplus{%
+  \mathpalette\@rightplus\relax}
+\newcommand*\@rightplus[1]{%
+  \mathbin{\vcenter{\hbox{$\m@th\overset{#1+}{\to}$}}}}
+
+\newcommand*\upplus{%
+  \mathbin{+\mathord\uparrow}}
+
+\makeatother
+% add indentation
+\usepackage{tocloft}
+% remove paragraph indentations and add newlines between paragraphs
+\usepackage[parfill]{parskip}
+
+\begin{document}
+    \begin{titlepage}
+        \begin{center}
+            \includegraphics[width=0.4\textwidth]{unswLogo}
+            
+            \begin{huge}
+            \text{Sydney}
+            \end{huge}
+            
+            \vspace*{0.6cm}
+            
+            School of Mechanical and Manufacturing Engineering
+            \vspace{0.6cm}
+            
+            \textbf{MMAN2100 - Engineering Design 2}
+            \vspace{0.3cm}
+            
+            Term 3 - 2019
+            \vspace{0.3cm}
+     
+            \textbf{Conceptual Design Report:\\Project 5}
+            \vspace{0.3cm}
+            
+            %\textbf{Project Title}
+            %\vspace{0.3cm}
+            
+            Date of Submission: $1^{st}$ Dec 2019\\
+            Submitted by Team: T09A Group 1
+
+            \begin{table}[h]
+                \centering
+                \begin{tabular}[h]{|l|l|l|}\hline
+                    Student Name & Student ID & Email \\\hline
+                    z1234567 & Blah & z1234567@ad.unsw.edu.au \\\hline
+                \end{tabular}
+            \end{table}
+
+       \end{center}
+    \end{titlepage}
+
+    \pagenumbering{roman}
+    \chapter*{Abstract}
+        \input{chapters/Abstract.tex}
+        \clearpage
+    \addcontentsline{toc}{chapter}{Abstract} 
+    
+    
+    \chapter*{Teamwork Statement}
+        \input{chapters/Teamwork_Statement.tex}
+        \clearpage
+    \addcontentsline{toc}{chapter}{Teamwork Statement} 
+    
+    
+    \tableofcontents
+    \clearpage
+    \listoffigures
+    \clearpage
+    \listoftables
+    \clearpage
+    
+    
+    \chapter{Introduction}
+    \pagenumbering{arabic}
+        \input{chapters/Introduction.tex}
+    
+    \chapter{Research of the Customer Domain}
+    \input{chapters/Research_Customer_Domain.tex}
+    
+    \section{Solicitation of Customer Voices}
+    \input{chapters/Solicitation_Customer_Voices.tex} 
+
+    \clearpage
+    \printbibliography[heading=bibintoc, title={References}]
+    \clearpage
+    
+    \appendix
+    \chapter{Appendices}
+    \label{sec:A-calculation_appendix}
+    \input{appendices/crowdsourcing.tex}
+    
+    \chapter{Engineering Drawings}
+    \input{appendices/Engineering_Drawings.tex}
+
+    
+    \clearpage
+
+\end{document}
