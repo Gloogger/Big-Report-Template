@@ -17,6 +17,8 @@
 % initialize image referencing
 \usepackage{graphicx}
 \graphicspath{ {images/} }
+% MATLAB Code Block
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
 % allows the insertion of figures as A3 or A2 pages
 \usepackage[paper=A4,pagesize]{typearea}
 \usepackage{afterpage}
@@ -96,7 +98,7 @@
             \begin{table}[h]
                 \centering
                 \begin{tabular}[h]{|l|l|l|}\hline
-                    Student Name & Student ID & Email \\\hline
+                    Student ID & Student Name & Email \\\hline
                     z1234567 & Blah & z1234567@ad.unsw.edu.au \\\hline
                 \end{tabular}
             \end{table}
@@ -128,6 +130,17 @@
     \chapter{Introduction}
     \pagenumbering{arabic}
         \input{chapters/Introduction.tex}
+\begin{lstlisting}
+for i = 1:3
+	if i >= 5                    % literate programming replacement
+		disp('cool');           % comment with some §\mcommentfont\LaTeX in it: $\mcommentfont\pi x^2$§
+	end
+	[~,ind] = max(vec);
+	x_last = x(1,end);
+	v(end);
+	really really long really really long really really long really really long really really long line % blaaaaaaaa
+end
+\end{lstlisting}
     
     \chapter{Research of the Customer Domain}
     \input{chapters/Research_Customer_Domain.tex}
